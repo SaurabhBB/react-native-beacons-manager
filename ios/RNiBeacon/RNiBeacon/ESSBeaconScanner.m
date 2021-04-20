@@ -95,7 +95,9 @@ static NSString *const kSeenCacheOnLostTimer = @"on_lost_timer";
 
 - (void)stopScanning {
   _shouldBeScanning = NO;
-  [_centralManager stopScan];
+  if (_centralManager) {
+    [_centralManager stopScan];
+  }
   [self clearRemainingTimers];
 }
 
